@@ -30,8 +30,13 @@ const getById = async (id) => {
   return result;
 };
 
+const remove = async (id) => {
+  await saleModel.remove(id);
+};
+
 module.exports = {
   register,
   getAll,
   getById,
+  remove,
 };
