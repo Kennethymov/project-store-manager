@@ -13,12 +13,33 @@ const hasProduct = async (id) => {
 };
 
 const registerProduct = async (id, product) => {
-  const querySaleProducts = 'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES(?, ?, ?)';
+  const querySaleProducts = 'INSERT INTO StoreManager.sales_products'
+    + '(sale_id, product_id, quantity) VALUES(?, ?, ?)';
   await connection.execute(querySaleProducts, [id, product.productId, product.quantity]);
+};
+
+const getAll = async () => {
+  const query = 'SELECT  sp.sale_id AS saleId, s.date, sp.product_id AS productId, sp.quantity '
+    + 'FROM StoreManager.sales AS s '
+    + 'JOIN StoreManager.sales_products AS sp ON s.id = sp.sale_id '
+    + 'ORDER BY sale_id, product_id;';
+  const [result] = await connection.execute(query);
+  return result;
+};
+
+const getById = async (id) => {
+  const query = 'SELECT s.date, sp.product_id AS productId, sp.quantity '
+    + 'FROM StoreManager.sales AS s '
+    + 'JOIN StoreManager.sales_products AS sp ON s.id = sp.sale_id '
+    + `WHERE sale_id = ${id};`;
+  const [result] = await connection.execute(query);
+  return result;
 };
 
 module.exports = {
   register,
   registerProduct,
   hasProduct,
+  getAll,
+  getById,
 };
