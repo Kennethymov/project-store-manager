@@ -4,7 +4,7 @@ const { connection } = require('../../../src/models/connection');
 const productModel = require('../../../src/models/productModel')
 const productService = require('../../../src/services/productService')
 const productController = require('../../../src/controllers/productController')
-const { getAll, getById } = require('../mocks/products.mock')
+const { getAll, getById, create } = require('../mocks/products.mock')
 
 describe('Teste de unidade da camada Controller', function () {
   describe('ProductController', function () {
@@ -34,9 +34,24 @@ describe('Teste de unidade da camada Controller', function () {
 
       await productController.getById(req, res);
 
+      expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(getById)).to.be.true;
     })
 
+    it('Verifica create', async function () {
+      sinon.stub(connection, 'execute').resolves([{ insertId: 4 }]);
+      const req = {};
+      const res = {};
+
+      req.body = { name: "Martelo do Batman" }
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      await productController.create(req, res)
+      
+      expect(res.status.calledWith(201)).to.be.true;
+      expect(res.json.calledWith(create)).to.be.true;
+    })
 
 
   })

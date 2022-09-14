@@ -18,7 +18,31 @@ const getById = {
   "name": "Martelo de Thor"
 }
 
+const create = {
+  "id": 4,
+  "name": "Martelo do Batman"
+}
+
+const update = {
+  "id": 4,
+  "name": "Force Staff"
+}
+
+const remove = [
+  {
+    "id": 2,
+    "name": "Traje de encolhimento"
+  },
+  {
+    "id": 3,
+    "name": "Escudo do Capitão América"
+  }
+]
+
 module.exports = {
   getAll,
-  getById
+  getById,
+  create,
+  update,
+  remove
 }

@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const { connection } = require('../../../src/models/connection');
 const productModel = require('../../../src/models/productModel')
 const productService = require('../../../src/services/productService')
-const { getAll, getById } = require('../mocks/products.mock')
+const { getAll, getById, create } = require('../mocks/products.mock')
 
 describe('Teste de unidade da camada Service', function () {
   describe('ProductService', function () {
@@ -22,6 +22,17 @@ describe('Teste de unidade da camada Service', function () {
       console.log(result);
 
       expect(result).to.be.equal(getById);
+    })
+
+    it('Verifica create', async function () {
+      sinon.stub(connection, 'execute').resolves([{ insertId: 4 }]);
+      const result = await productService.create("Martelo do Batman")
+      const obj = {
+        id: 4,
+        name: "Martelo do Batman"
+      }
+
+      expect(result).to.be.deep.equal(obj);
     })
 
 
