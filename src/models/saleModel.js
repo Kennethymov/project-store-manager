@@ -19,7 +19,7 @@ const registerProduct = async (id, product) => {
 };
 
 const getAll = async () => {
-  const query = 'SELECT  sp.sale_id AS saleId, s.date, sp.product_id AS productId, sp.quantity '
+  const query = 'SELECT sp.sale_id AS saleId, s.date, sp.product_id AS productId, sp.quantity '
     + 'FROM StoreManager.sales AS s '
     + 'JOIN StoreManager.sales_products AS sp ON s.id = sp.sale_id '
     + 'ORDER BY sale_id, product_id;';
