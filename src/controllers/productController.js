@@ -15,7 +15,6 @@ const getById = async (req, res) => {
 
 const create = async (req, res) => {
     const { name } = req.body;
-    console.log(req.body);
     const newProduct = await productService.create(name);
     return res.status(201).json(newProduct);
 };
