@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const { connection } = require('../../../src/models/connection');
 const productModel = require('../../../src/models/productModel')
 const productService = require('../../../src/services/productService')
-const { getAll, getById, create } = require('../mocks/products.mock')
+const { getAll, getById, create, update, remove } = require('../mocks/products.mock')
 
 describe('Teste de unidade da camada Service', function () {
   describe('ProductService', function () {
@@ -32,8 +32,27 @@ describe('Teste de unidade da camada Service', function () {
         name: "Martelo do Batman"
       }
 
-      expect(result).to.be.deep.equal(obj);
+      expect(result).to.be.deep.equal(create);
     })
+
+    it('Verifica update', async function () {
+      sinon.stub(connection, 'execute');
+      sinon.stub(productModel, 'getById').resolves(update)
+      await productService.update(4, 'Force Staff')
+      const product = await productModel.getById(4)
+
+      expect(product).to.be.deep.equal(update);
+    })
+
+    it('Verifica remove', async function () {
+      sinon.stub(connection, 'execute');
+      sinon.stub(productModel, 'getAll').resolves(remove)
+      await productService.remove(1)
+      const products = await productModel.getAll()
+
+      expect(products).to.be.deep.equal(remove);
+    })
+
 
 
 
