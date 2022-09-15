@@ -2,7 +2,6 @@ const productModel = require('../models/productModel');
 
 const getAll = async () => {
   const result = await productModel.getAll();
-  console.log(`service${result}`);
   return result;
 };
 
@@ -26,10 +25,17 @@ const remove = async (id) => {
   await productModel.remove(id);
 };
 
+const search = async (q) => {
+  const products = await productModel.getAll();
+  const result = products.filter((product) => product.name.includes(q));
+  return result;
+};
+
 module.exports = {
   getAll,
   getById,
   create,
   update,
   remove,
+  search,
 };

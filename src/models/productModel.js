@@ -28,10 +28,14 @@ const remove = async (id) => {
   await connection.execute(query, [id]);
 };
 
+const search = async () => {
+};
+
 module.exports = {
   getAll,
   getById,
   create,
   update,
   remove,
+  search,
 };

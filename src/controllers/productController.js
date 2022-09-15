@@ -36,10 +36,18 @@ const remove = async (req, res) => {
   return res.status(204).send();
 };
 
+const search = async (req, res) => {
+  const { q } = req.query;
+  const result = await productService.search(q);
+  console.log(result);
+  return res.status(200).json(result);
+};
+
 module.exports = {
   getAll,
   getById,
   create,
   update,
   remove,
+  search,
 };

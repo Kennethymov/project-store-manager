@@ -4,6 +4,8 @@ const nameValidation = require('../middlewares/nameValidation');
 
 const productRoute = express.Router();
 
+productRoute.get('/search', productController.search);
+
 productRoute.get('/', productController.getAll);
 
 productRoute.get('/:id', productController.getById);
