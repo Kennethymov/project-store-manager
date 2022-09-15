@@ -12,4 +12,6 @@ saleRoute.get('/:id', saleController.getById);
 
 saleRoute.delete('/:id', saleController.remove);
 
+saleRoute.put('/:id', saleValidation, saleController.update);
+
 module.exports = saleRoute;
