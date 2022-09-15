@@ -42,7 +42,8 @@ const remove = async (id) => {
 };
 
 const update = async (id, product) => {
-  const query = 'UPDATE StoreManager.sales_products SET quantity = ? WHERE sale_id = ? AND product_id = ?;';
+  const query = 'UPDATE StoreManager.sales_products SET quantity = ? '
+    + 'WHERE sale_id = ? AND product_id = ?;';
   await connection.execute(query, [product.quantity, id, product.productId]);
 };
 
