@@ -1,6 +1,5 @@
 # STORE MANAGER
 
-<details>
   <summary><strong>👨‍💻 O que foi desenvolvido nesse projeto?</strong></summary>
 
 Foi desenvolvido uma API utilizando a arquitetura MSC (model-service-controller)!
