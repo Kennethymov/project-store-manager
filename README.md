@@ -1,4 +1,4 @@
-# 🚧 README em construção 🚧
+# STORE MANAGER
 
 <details>
   <summary><strong>👨‍💻 O que foi desenvolvido nesse projeto?</strong></summary>
@@ -11,7 +11,9 @@ Para essa aplicação foi utilizado NodeJS, executando com o auxilio do Docker.
 
   <br />
 
-<## 01 - Crie endpoints para listar produtos
+## Abaixo temos os requisitos e as avaliações do projeto desenvolvido.
+
+## 01 - endpoints para listar produtos
 
 - O endpoint para listar produtos deve ser acessível através do caminho (`/products`) e (`/products/:id`);
 - Através do caminho `/products`, todos os produtos devem ser retornados;
